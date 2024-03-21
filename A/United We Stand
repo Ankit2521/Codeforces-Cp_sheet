@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+       int n;
+       cin>>n;
+       vector<int>arr(n);
+       for(int i=0;i<n;i++){
+        cin>>arr[i];
+       }
+      map<int,int>mpp;
+      for (auto a: arr){
+        mpp[a]++;
+      }
+      if(mpp.size()==1){
+        cout<<"-1"<<'\n';
+      }
+      else{
+        int ele = begin(mpp)->first;//key : element
+        int freq = begin(mpp)->second;//value :frequency
+
+        //print lb,lc
+        cout<<freq<<" "<<n-freq<<'\n';
+
+        //print b
+        for (int i = 0; i < freq; ++i)
+        {
+            cout<<ele<<" ";
+        }
+        cout<<'\n';
+        mpp.erase(ele);//delets entry with given key
+      for(auto it = mpp.begin(); it != mpp.end(); ++it) {
+    int e = it->first;
+    int f = it->second;
+    for (int i = 0; i < f; ++i) {
+        cout << e << " ";
+    }
+    }
+cout << '\n';
+
+    }
+}
+    
+    return 0;
+}
+
+// 2nd approach
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+       int n;
+       cin>>n;
+       vector<int>arr(n);
+       for(int i=0;i<n;i++){
+        cin>>arr[i];
+       }
+       int mx =0;
+       for (int i = 0; i < n; ++i)
+       {
+           mx = max(mx,arr[i]);
+       }
+       vector <int>a,b;
+       for(int i=0;i<n;i++){
+        if(mx==arr[i]){
+            b.push_back(arr[i]);
+        }
+        else{
+            a.push_back(arr[i]);
+        }
+       }
+       if(a.size()==0){
+        cout<<"-1"<<'\n';
+        continue;
+       }
+       cout<<a.size()<<" "<<b.size()<<'\n';
+       for(auto i:a){
+        cout<<i<<" ";
+       }
+       cout<<endl;
+       for(auto i:b){
+        cout<<i<<" ";
+       }
+       cout<<endl;
+}
+    
+    return 0;
+}
+
+
+
